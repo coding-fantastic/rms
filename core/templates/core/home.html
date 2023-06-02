@@ -1,0 +1,117 @@
+{% extends 'core/layouts/blank.html' %}
+
+<h1></h1>
+{% block context %}
+
+<!-- Small boxes (Stat box) -->
+<div class="row">
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>{{occupiedRooms}}</h3>
+
+        <p>Number of Tenants</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-bag"></i>
+      </div>
+      <a href="#" class="small-box-footer"
+        >More info <i class="fas fa-arrow-circle-right"></i
+      ></a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-success">
+      <div class="inner">
+        <h3>{{paymentsMade}}</h3>
+
+        <p>Total Payments made on {{month_name}}</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-stats-bars"></i>
+      </div>
+      <a href="#" class="small-box-footer"
+        >More info <i class="fas fa-arrow-circle-right"></i
+      ></a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-warning">
+      <div class="inner">
+        <h3>{{totalPayments}}</h3>
+
+        <p>Amount Paid for {{month_name}}</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-person-add"></i>
+      </div>
+      <a href="#" class="small-box-footer"
+        >More info <i class="fas fa-arrow-circle-right"></i
+      ></a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-danger">
+      <div class="inner">
+        <h3>{{totalUnitNumber}}</h3>
+
+        <p>Number of houses</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-pie-graph"></i>
+      </div>
+      <a href="#" class="small-box-footer"
+        >More info <i class="fas fa-arrow-circle-right"></i
+      ></a>
+    </div>
+  </div>
+  <!-- ./col -->
+</div>
+<!-- /.row -->
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Recent Payments</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body p-0">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th style="width: 50px">Building</th>
+              <th>Floor</th>
+              <th>Room</th>
+              <th style="width: 40px">Payment</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for tenant in tenants %}
+            <tr>
+              <td>{{tenant.building}}</td>
+              <td>{{tenant.floor}}</td>
+              <td>{{tenant.room}}</td>
+
+              <td><span class="badge bg-success">{{tenant.payment}}</span></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+  </div>
+  <!-- /.col-md-10 -->
+</div>
+<!-- /.row -->
+
+{% endblock context %}

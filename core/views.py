@@ -77,7 +77,7 @@ def countOccupiedRooms():
         thisList.append(occupiedCount)
         thisList.append(queryPaymentsMade)
         thisList.append(queryTotalPaymentsMade)
-        thisList.append(queryNumberUnits)
+        thisList.append(queryNumberUnits)        
 
 
 
@@ -100,6 +100,7 @@ def index(request):
         'totalPayments' : countOccupiedRooms()[2],
         'totalUnitNumber' : countOccupiedRooms()[3], 
         
+        
     }
     return render(request, 'core/index.html', context)
 
@@ -110,8 +111,9 @@ def home(request):
     current_month = datetime.now().month
     month_name = calendar.month_name[current_month]
 
-     # Limit the queryset to 5 objects
-    tenants = Tenant.objects.all()[:5]
+    # get the recent payments in descending order 
+         # Limit the queryset to 5 objects
+    recentPayments = Tenant.objects.order_by('-modifiedAt')[:5]
 
     context = {
         
@@ -120,7 +122,7 @@ def home(request):
         'paymentsMade' : countOccupiedRooms()[1],
         'totalPayments' : countOccupiedRooms()[2],
         'totalUnitNumber' : countOccupiedRooms()[3], 
-        'tenants' : tenants,
+        'tenants' : recentPayments,
         
     }
     return render(request, 'core/home.html', context)

@@ -11,7 +11,7 @@ router.register('Comments', CommentViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path('', views.index),
+    path('', views.home),
     # path('comments/count/', views.count_comments, name='count_comments'),
     path('home',views.home,),
 ]

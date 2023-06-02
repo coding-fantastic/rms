@@ -29,6 +29,11 @@ from django.contrib import admin
 from django.urls import path, include , re_path
 from rest_framework.authtoken.views import obtain_auth_token
 from django.views.generic import RedirectView
+from django.contrib import admin 
+
+
+admin.site.site_header = 'Site Admin'
+admin.site.site_title = 'Site Admin'
 
 urlpatterns = [
     path('admin/', admin.site.urls),

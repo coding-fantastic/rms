@@ -106,9 +106,9 @@ def home(request):
         'totalPayments' : countOccupiedRooms()[2],
         'totalUnitNumber' : countOccupiedRooms()[3], 
         'tenants' : recentPayments,
-        'expenses' : Expense.objects.all(),
+        'expenses' : Expense2.objects.all(),
         # get total of expenses 
-        'totalExpenses' : Expense.objects.aggregate(total=Sum('amount'))['total']
+        'totalExpenses' : Expense2.objects.aggregate(total=Sum('amount'))['total']
         
     }
     return render(request, 'core/home.html', context)

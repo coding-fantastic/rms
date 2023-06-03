@@ -9,6 +9,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime
 import calendar
+from django.db.models import Sum
+
 
 from django.db import connection
 # Create your views here.
@@ -77,32 +79,13 @@ def countOccupiedRooms():
         thisList.append(occupiedCount)
         thisList.append(queryPaymentsMade)
         thisList.append(queryTotalPaymentsMade)
-        thisList.append(queryNumberUnits)        
+        thisList.append(queryNumberUnits)
 
 
 
     # return HttpResponse(f'Total comments: {occupiedCount}')
     # return occupiedCount
     return thisList
-
-
-def index(request):
-
-    # get the current name of the month 
-    current_month = datetime.now().month
-    month_name = calendar.month_name[current_month]
-    
-    context = {
-        
-        'month_name' : month_name,
-        'occupiedRooms' : countOccupiedRooms()[0],
-        'paymentsMade' : countOccupiedRooms()[1],
-        'totalPayments' : countOccupiedRooms()[2],
-        'totalUnitNumber' : countOccupiedRooms()[3], 
-        
-        
-    }
-    return render(request, 'core/index.html', context)
 
 
 def home(request):
@@ -123,6 +106,27 @@ def home(request):
         'totalPayments' : countOccupiedRooms()[2],
         'totalUnitNumber' : countOccupiedRooms()[3], 
         'tenants' : recentPayments,
+        'expenses' : Expense.objects.all(),
+        # get total of expenses 
+        'totalExpenses' : Expense.objects.aggregate(total=Sum('amount'))['total']
         
     }
     return render(request, 'core/home.html', context)
+
+
+def index(request):
+
+    # get the current name of the month 
+    current_month = datetime.now().month
+    month_name = calendar.month_name[current_month]
+    
+    context = {
+        
+        'month_name' : month_name,
+        'occupiedRooms' : countOccupiedRooms()[0],
+        'paymentsMade' : countOccupiedRooms()[1],
+        'totalPayments' : countOccupiedRooms()[2],
+        'totalUnitNumber' : countOccupiedRooms()[3], 
+    }
+    return render(request, 'core/index.html', context)
+

@@ -115,4 +115,41 @@
 </div>
 <!-- /.row -->
 
+<div class="card card-warning">
+  <div class="card-header">
+    <h3 class="card-title">Expenses</h3>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body table-responsive p-0">
+    <table class="table table-hover text-nowrap">
+      <thead>
+        <tr>
+          <th>Building</th>
+          <th>Floor</th>
+          <th>Room</th>
+          <th>Expenses</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for expense in expenses %}
+        <tr>
+          <td>{{expense.building}}</td>
+          <td>{{expense.floor}}</td>
+          <td>{{expense.room}}</td>
+          <td>{{expense.expense}}</td>
+          <td>{{expense.amount}}</td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+      <tr>
+        <td>Total: <strong> {{totalExpenses}} </strong></td>
+      </tr>
+    </table>
+  </div>
+  <!-- /.card-body -->
+</div>
+<!-- /.card -->
+
 {% endblock context %}

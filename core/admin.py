@@ -49,3 +49,8 @@ class ExpenseModel(admin.ModelAdmin):
     list_filter =('building','floor', 'room','expense','amount','createdAt')
     list_display = ('building','floor', 'room','expense','amount','createdAt')
 
+@admin.register(Expense2)
+    
+class Expense2Model(admin.ModelAdmin):
+    list_filter =('building','floor', 'room','expense','amount','createdAt')
+    list_display = ('building','floor', 'room','expense','amount','createdAt')

@@ -93,21 +93,5 @@ class Expense(models.Model):
     def __str__(self):
         return self.expense
 
-class Expense2(models.Model):
-    building = models.ForeignKey(Building, on_delete=models.CASCADE , blank=True , null=True)
-    floor = models.ForeignKey(Floor, on_delete=models.CASCADE , blank=True , null=True)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE , blank=True , null=True)
-    expense = models.TextField()
-    amount = models.CharField(max_length=150, blank=True)
-    createdAt = models.DateTimeField( auto_now_add=True)
-    modifiedAt = models.DateTimeField( auto_now=True)
 
-class Expense3(models.Model):
-    building = models.ForeignKey(Building, on_delete=models.CASCADE , blank=True , null=True)
-    floor = models.ForeignKey(Floor, on_delete=models.CASCADE , blank=True , null=True)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE , blank=True , null=True)
-    expense = models.TextField()
-    amount = models.CharField(max_length=150, blank=True)
-    createdAt = models.DateTimeField( auto_now_add=True)
-    modifiedAt = models.DateTimeField( auto_now=True)
 

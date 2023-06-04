@@ -37,11 +37,11 @@ class RentalModel(admin.ModelAdmin):
     list_display = ('building','floor', 'room','rentalAmount','createdAt')
 
     
-@admin.register(Comments)
+# @admin.register(Comments)
     
-class CommentsModel(admin.ModelAdmin):
-    list_filter =('building','floor', 'room','comment','createdAt')
-    list_display = ('building','floor', 'room','comment','createdAt')
+# class CommentsModel(admin.ModelAdmin):
+#     list_filter =('building','floor', 'room','comment','createdAt')
+#     list_display = ('building','floor', 'room','comment','createdAt')
 
 @admin.register(Expense)
     

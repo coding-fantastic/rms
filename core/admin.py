@@ -43,9 +43,9 @@ class CommentsModel(admin.ModelAdmin):
     list_filter =('building','floor', 'room','comment','createdAt')
     list_display = ('building','floor', 'room','comment','createdAt')
 
-@admin.register(Expense2)
+@admin.register(Expense)
     
-class Expense2Model(admin.ModelAdmin):
+class ExpenseModel(admin.ModelAdmin):
     list_filter =('building','floor', 'room','expense','amount','createdAt')
     list_display = ('building','floor', 'room','expense','amount','createdAt')
 
